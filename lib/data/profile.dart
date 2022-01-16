@@ -77,7 +77,36 @@ Persons qualified as electors
       """
       ..votesFor = 100
       ..votesAgainst = 3400
-      ..totalVotes = 4000
+      ..totalVotes = 4000,
+    
+    LawData()
+      ..lawId = 3
+      ..title = "Make University Free"
+      ..description = "Make all universitiies publically funded"
+      ..startDate = DateTime.now().subtract(const Duration(days: 3))
+      ..endDate = DateTime.now().add(const Duration(days: 3))
+      ..status = LawStatus.active
+      ..lawBody = 
+      """
+Canada Schooling Act
+1 The definition future elector in subsection 2(1) of the Canada Elections Act is replaced by the following:
+future elector means a Canadian citizen who is 14 or 15 years of age. (futur électeur)
+2 Section 3 of the Act is replaced by the following:
+Persons qualified as electors
+3 Every person who is a Canadian citizen and is 16 years of age or older on polling day is qualified as an elector.
+3 Subsection 22(5) of the Act is repealed.
+4 (1) Subparagraph 281.‍3(a)‍(ii) of the Act is replaced by the following:
+(ii) is not or will not be 16 years of age or older on polling day; or
+(2) Subparagraph 281.‍3(b)‍(ii) of the Act is replaced by the following:
+(ii) is not or will not be 16 years of age or older on polling day.
+5 Paragraph 384.‍3(3)‍(a) is replaced by the following:
+(a) any person who was under 16 years of age on the day on which the event took place;
+6 Paragraph 549.‍1(1)‍(b) is replaced by the following:
+(b) the elector is or will be 16 years of age or older on polling day;
+      """
+      ..votesFor = 10000
+      ..votesAgainst = 100
+      ..totalVotes = 11111
   ];
 
   static String get identityHash
@@ -138,7 +167,13 @@ Persons qualified as electors
     await storage.write(key: 'qr_code', value: qrCode);
   }
 
+  static clear() {
+    final storage = new FlutterSecureStorage();
+    storage.deleteAll();
+  }
+
   static Future<bool> checkAlreadyVerified() async {
+    // clear();
     if (verified) return true;
     final storage = new FlutterSecureStorage();
     passportId = await storage.read(key: 'passport_id') ?? "";

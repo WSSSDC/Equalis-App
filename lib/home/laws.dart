@@ -36,6 +36,17 @@ class Law extends StatefulWidget {
 }
 
 class _LawState extends State<Law> {
+
+  Color colorthing () {
+    if (widget.law.status == LawStatus.active) {
+      return Colors.green;
+    } else if (widget.law.status == LawStatus.inactive) {
+      return Colors.red;
+    } else {
+      return Colors.yellow;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,8 +60,8 @@ class _LawState extends State<Law> {
           children: [
             Row(
               children: [
-                const CircleAvatar(
-                  backgroundColor: Colors.yellow,
+                CircleAvatar(
+                  backgroundColor: colorthing(),
                   radius: 10.0,
                 ),
                 Container(width: 8.0),
