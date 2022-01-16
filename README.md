@@ -70,7 +70,8 @@ Users sign up by scanning their passport, health card, and a special QR Code sen
 ## 💻 Lines of Code
 - 389 lines of Python Code
 - 213 lines of Solidity Code
-- X lines of Flutter
+- 1689 lines of Flutter
+
 ## 🙇‍♂️ Acknowledgements
 
 We would like to thank DeltaHacks for the opportunity to create and develop our idea.
